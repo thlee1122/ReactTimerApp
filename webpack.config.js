@@ -1,49 +1,44 @@
 var webpack = require('webpack');
 
 module.exports = {
-	entry: [
-		'script!jquery/dist/jquery.min.js',
-		'script!foundation-sites/dist/foundation.min.js',
-		'./app/app.jsx'
-	],
-	externals: {
-		jquery: 'jQuery'
-	},
-	plugins: [
-		new webpack.ProvidePlugin({
-			'$': 'jquery',
-			'jQuery': 'jquery'
-		})
-	],
-	output: {
-		path: __dirname,
-		filename: './public/bundle.js'
-	},
-
-	resolve: {
-		root: __dirname,
-		alias: {
-			Main: 'app/components/Main.jsx',
-			applicationStyles: 'app/styles/app.scss',
-			Navigation: 'app/components/Navigation.jsx'
-
-		},
-		extensions: ['', '.js', '.jsx']
-	},
-
-	module: {
-		loaders: [
-			{
-				loader: 'babel-loader',
-				query: {
-					presets: ['react', 'es2015', 'stage-0']
-				},
-				test: /\.jsx?$/,
-				exclude: /(node_modules|bower_components)/
-			}
-		]
-	},
-	//debugger tool that allows debugger console to output actual file line numbers
-	//& the actual code that we wrote in the file, not the code that browser understands
-	devtool: 'cheap-module-eval-source-map'
-}
+  entry: [
+    'script!jquery/dist/jquery.min.js',
+    'script!foundation-sites/dist/foundation.min.js',
+    './app/app.jsx'
+  ],
+  externals: {
+    jquery: 'jQuery'
+  },
+  plugins: [
+    new webpack.ProvidePlugin({
+      '$': 'jquery',
+      'jQuery': 'jquery'
+    })
+  ],
+  output: {
+    path: __dirname,
+    filename: './public/bundle.js'
+  },
+  resolve: {
+    root: __dirname,
+    alias: {
+      Main: 'app/components/Main.jsx',
+      applicationStyles: 'app/styles/app.scss',
+      Navigation: 'app/components/Navigation.jsx'
+    },
+    extensions: ['', '.js', '.jsx']
+  },
+  module: {
+    loaders: [
+      {
+        loader: 'babel-loader',
+        query: {
+          presets: ['react', 'es2015', 'stage-0']
+        },
+        test: /\.jsx?$/,
+        exclude: /(node_modules|bower_components)/
+      }
+    ]
+  },
+  devtool: 'cheap-module-eval-source-map'
+};
